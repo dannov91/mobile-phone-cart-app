@@ -1,0 +1,537 @@
+<!-- IMPORTANT:
+FIX ISSUES:
+1. VALIDATE FORM WITH JAVASCRIPT REGULAR EXPRESSIONS
+2. WHEN ADDING TO CART THE INVENTORY CAN GO NEGATIVE, FIX!!
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Mobile Phone Cart App</title>
+
+	<!-- Display the page in real size -->
+	<meta name="viewport" content="width=device-width">
+
+	<!-- CSS Normalize -->
+	<link rel="stylesheet" href="css/normalize/normalize.css">
+
+	<!-- Main Stylesheet -->
+	<link rel="stylesheet" href="css/style.css">
+
+	<!-- Font Awesome Icon Library -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<!-- Google Icon Library -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body>
+
+	<h1 class="main-title">
+		The Responsive Shopping Cart Playground - By Daniel Oviedo
+	</h1>
+
+	<header id="header">
+
+<!-- cart-account shopping-cart -->
+
+		<div class="btn-t1 btn-cart"">
+
+			<i class="fa fa-shopping-cart"></i>&nbsp;CART&nbsp;<i class="fa fa-caret-down"></i>
+			<span class="counter">0</span>
+
+		</div>
+
+		<div class="cart cart-items" style="display: none;">
+
+			<ul class="shopping-list">
+
+
+			</ul>
+
+			<div class="final-cart">
+				<h2 id="subtotalPrice"></h2>
+				<div>
+
+					<a class="btn-t1 btn-view"">
+
+						<i class="fa fa-shopping-cart"></i>&nbsp;		VIEW CART
+
+					</a>
+
+					<a class="btn-t1 btn-checkout"">
+						CHECKOUT
+					</a>
+
+				</div>
+			</div>
+
+		</div>
+
+	</header>
+
+	<div class="section-featured">
+		
+		<div class="featured-header">
+
+			<h1>FEATURED ITEMS</h1>
+			<div class="border-decorative" id="featured-pos"></div>
+
+		</div>
+
+		<ul class="featured-wrapper">
+			
+			<li class="featured-item iPhone6">
+
+				<div class="container-box">
+
+					<div class="image-container">
+						<a href="">
+						<img id="product-image" src="https://askbootstrap.com/preview/osahan-mobile/images/all-products/small/1.jpg" alt="">
+						</a>
+					</div>
+
+					<div class="footer-container-unhovered">
+						<h2 class="featured-title">Iphone 6 Gold 32GB</h2>
+						<div class="product-price">
+							<span class="prev-price">&nbsp;</span>
+							<span class="actual-price"></span>
+						</div>
+						<span class="review">
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							(613)
+						</span>
+					</div>
+
+					<div class="footer-container-clicked">
+
+						<div class="icons-clicked">
+
+							<a class="link-shopping-cart">
+								<i class="fa fa-shopping-cart"></i>
+								<div class="tool-cart-container">
+									<span class="tooltip-cart">Add To Cart</span>
+									<div class="squared-cart"></div>
+								</div>
+							</a>
+					
+						</div>
+
+						<div class="qtyInput">
+							<i class="fa fa-plus-circle"></i>
+							<input class="qtyNumber" type="text" readonly value="1">
+							<i class="fa fa-minus-circle"></i>
+						</div>
+
+						<div class="qtyAvailable">
+							<span>Qty Available: </span><span id="inventory">5</span>
+						</div>
+
+					</div>
+
+					<i class="fa fa-heart"></i>
+					<span class="normal-tag red-tag">HOT</span>
+
+				</div>
+
+			</li>
+
+			<li class="featured-item huaweiP20Lite">
+
+				<div class="container-box">
+
+					<div class="image-container">
+						<a href="">
+						<img src="https://askbootstrap.com/preview/osahan-mobile/images/all-products/small/2.jpg" alt="">
+						</a>
+					</div>
+
+					<div class="footer-container-unhovered">
+						<h2 class="featured-title">Huawei P20 Lite</h2>
+						<div class="product-price">
+							<span class="prev-price">&nbsp;</span>
+							<span class="actual-price"></span>
+						</div>
+						<span class="review">
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							(613)
+						</span>
+					</div>
+
+					<div class="footer-container-clicked">
+
+						<div class="icons-clicked">
+
+							<a class="link-shopping-cart">
+								<i class="fa fa-shopping-cart"></i>
+								<div class="tool-cart-container">
+									<span class="tooltip-cart">Add To Cart</span>
+									<div class="squared-cart"></div>
+								</div>
+							</a>
+					
+						</div>
+
+						<div class="qtyInput">
+							<i class="fa fa-plus-circle"></i>
+							<input class="qtyNumber" type="text" readonly value="1">
+							<i class="fa fa-minus-circle"></i>
+						</div>
+
+						<div class="qtyAvailable">
+							<span>Qty Available: </span><span id="inventory">5</span>
+						</div>
+
+					</div>
+
+					<i class="fa fa-heart"></i>
+					<span class="normal-tag red-tag">HOT</span>
+
+				</div>
+
+			</li>
+
+			<li class="featured-item samsungGalaxyS8">
+
+				<div class="container-box">
+
+					<div class="image-container">
+						<a href="">
+						<img id="product-image" src="https://askbootstrap.com/preview/osahan-mobile/images/all-products/small/3.jpg" alt="">
+						</a>
+					</div>
+
+					<div class="footer-container-unhovered">
+						<h2 class="featured-title">Samsung Galaxy S8</h2>
+						<div class="product-price">
+							<span class="prev-price">&nbsp;</span>
+							<span class="actual-price"></span>
+						</div>
+						<span class="review">
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							(613)
+						</span>
+					</div>
+
+					<div class="footer-container-clicked">
+
+						<div class="icons-clicked">
+
+							<a class="link-shopping-cart">
+								<i class="fa fa-shopping-cart"></i>
+								<div class="tool-cart-container">
+									<span class="tooltip-cart">Add To Cart</span>
+									<div class="squared-cart"></div>
+								</div>
+							</a>
+					
+						</div>
+
+						<div class="qtyInput">
+							<i class="fa fa-plus-circle"></i>
+							<input class="qtyNumber" type="text" readonly value="1">
+							<i class="fa fa-minus-circle"></i>
+						</div>
+
+						<div class="qtyAvailable">
+							<span>Qty Available: </span><span id="inventory">5</span>
+						</div>
+
+					</div>
+
+					<i class="fa fa-heart"></i>
+					<span class="normal-tag red-tag">HOT</span>
+
+				</div>
+
+			</li>
+
+			<li class="featured-item XiaomiMiA1">
+
+				<div class="container-box">
+
+					<div class="image-container">
+						<a href="">
+						<img id="product-image" src="https://images-na.ssl-images-amazon.com/images/I/61JJNAxm00L._SY355_.jpg" alt="">
+						</a>
+					</div>
+
+					<div class="footer-container-unhovered">
+						<h2 class="featured-title">Xiaomi Mi A1</h2>
+						<div class="product-price">
+							<span class="prev-price">$200</span>
+							<span class="actual-price">$150</span>
+						</div>
+						<span class="review">
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							(613)
+						</span>
+					</div>
+
+					<div class="footer-container-clicked">
+
+						<div class="icons-clicked">
+
+							<a class="link-shopping-cart">
+								<i class="fa fa-shopping-cart"></i>
+								<div class="tool-cart-container">
+									<span class="tooltip-cart">Add To Cart</span>
+									<div class="squared-cart"></div>
+								</div>
+							</a>
+					
+						</div>
+
+						<div class="qtyInput">
+							<i class="fa fa-plus-circle"></i>
+							<input class="qtyNumber" type="text" readonly="" value="1">
+							<i class="fa fa-minus-circle"></i>
+						</div>
+
+						<div class="qtyAvailable">
+							<span>Qty Available: </span><span id="inventory">10</span>
+						</div>
+
+					</div>
+
+					<i class="fa fa-heart"></i>
+					<span class="normal-tag red-tag">HOT</span>
+
+				</div>
+
+			</li>
+
+			<li class="featured-item AlcatelA7">
+
+				<div class="container-box">
+
+					<div class="image-container">
+						<a href="">
+						<img id="product-image" src="https://media.aws.alkosto.com/media/catalog/product/cache/6/image/69ace863370f34bdf190e4e164b6e123/a/7/a7_metallic-black_back-left-e.png" alt="">
+						</a>
+					</div>
+
+					<div class="footer-container-unhovered">
+						<h2 class="featured-title">Alcatel A7</h2>
+						<div class="product-price">
+							<span class="prev-price">$350</span>
+							<span class="actual-price">$300</span>
+						</div>
+						<span class="review">
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							(613)
+						</span>
+					</div>
+
+					<div class="footer-container-clicked">
+
+						<div class="icons-clicked">
+
+							<a class="link-shopping-cart">
+								<i class="fa fa-shopping-cart"></i>
+								<div class="tool-cart-container">
+									<span class="tooltip-cart">Add To Cart</span>
+									<div class="squared-cart"></div>
+								</div>
+							</a>
+					
+						</div>
+
+						<div class="qtyInput">
+							<i class="fa fa-plus-circle"></i>
+							<input class="qtyNumber" type="text" readonly="" value="1">
+							<i class="fa fa-minus-circle"></i>
+						</div>
+
+						<div class="qtyAvailable">
+							<span>Qty Available: </span><span id="inventory">15</span>
+						</div>
+
+					</div>
+
+					<i class="fa fa-heart"></i>
+					<span class="normal-tag red-tag">HOT</span>
+
+				</div>
+
+			</li>
+
+			<li class="featured-item MotorolaG5">
+
+				<div class="container-box">
+
+					<div class="image-container">
+						<a href="">
+						<img id="product-image" src="https://media.aws.alkosto.com/media/catalog/product/cache/3/image/8bf9d84cc5f65bd89f2d4160406987fb/6/9/6947681539921-1.jpg" alt="">
+						</a>
+					</div>
+
+					<div class="footer-container-unhovered">
+						<h2 class="featured-title">Motorola G5</h2>
+						<div class="product-price">
+							<span class="prev-price">$250</span>
+							<span class="actual-price">$200</span>
+						</div>
+						<span class="review">
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							(613)
+						</span>
+					</div>
+
+					<div class="footer-container-clicked">
+
+						<div class="icons-clicked">
+
+							<a class="link-shopping-cart">
+								<i class="fa fa-shopping-cart"></i>
+								<div class="tool-cart-container">
+									<span class="tooltip-cart">Add To Cart</span>
+									<div class="squared-cart"></div>
+								</div>
+							</a>
+					
+						</div>
+
+						<div class="qtyInput">
+							<i class="fa fa-plus-circle"></i>
+							<input class="qtyNumber" type="text" readonly="" value="1">
+							<i class="fa fa-minus-circle"></i>
+						</div>
+
+						<div class="qtyAvailable">
+							<span>Qty Available: </span><span id="inventory">4</span>
+						</div>
+
+					</div>
+
+					<i class="fa fa-heart"></i>
+					<span class="normal-tag red-tag">HOT</span>
+
+				</div>
+
+			</li>
+
+		</ul>
+
+		<!-- END OF FEATURED WRAPPER -->
+
+		<div class="arrows" id="finite-arrows">
+			<div class="icn-t1 icn-arrow icn-arrow-left"><i class="fa fa-chevron-left"></i></div>
+			<div class="icn-t1 icn-arrow icn-arrow-right"><i class="fa fa-chevron-right"></i></div>
+		</div>
+
+	</div>
+
+	<button class="btn-t2 btn-toggle" type="button">
+			Hide Admin Panel
+	</button>
+
+	<div class="admin-config" style="display:flex;">
+
+		<div class="admin-panel panel-create-item">
+
+			<h2 class="panel-header">
+				Admin Panel - Create Items
+			</h2>
+
+			<form class="create-form" action="">
+				<div class="input-container input-product-name">
+					<label for="product-name">Product Name:</label>
+					<input id="product-name" type="text">
+					<span class="tooltip tooltip-product-name" style="display: none">Only letters, digits and "-"</span>
+				</div>
+				<div class="input-container input-previous-price">
+					<label for="previous-price">Previous Price:</label>
+					<input id="previous-price" type="text">
+					<span class="tooltip tooltip-previous-price" style="display: none">Digits only, do not separate by dots or commas</span>
+				</div>
+				<div class="input-container input-actual-price">
+					<label for="actual-price">Actual Price:</label>	
+					<input id="actual-price" type="text">
+					<span class="tooltip tooltip-actual-price" style="display: none">Digits only, do not separate by dots or commas</span>
+				</div>
+				<div class="input-container input-total-inventory">
+					<label for="total-inventory">Total Inventory:</label>
+					<input id="total-inventory"type="text">
+					<span class="tooltip tooltip-inventory" style="display: none">Digits only, do not separate by dots or commas</span>
+				</div>
+				<div class="input-container input-model-color">
+					<label for="model-color">Color: </label>
+					<input id="model-color" type="text">
+					<span class="tooltip tooltip-model-color" style="display: none">Only letters, digits and "-"</span>
+				</div>
+				<div class="input-container input-model-capacity">
+					<label for="model-capacity">Capacity: </label>
+					<input id="model-capacity" type="text">
+					<span class="tooltip tooltip-model-capacity" style="display: none">Internal Memory in Gigabites, digits only.</span>
+				</div>
+				<div class="input-container input-image">
+					<label for="phone-image">Image URL:</label>
+					<input id="phone-image" type="text" required>
+				</div>
+				<div class="btn-wrapper">
+					<button class="btn-t2 btn-create-item" type="button">Create Item</button>
+				</div>
+			</form>
+
+			<h3 class="warning-empty" style="display: none;">
+				*Error: there is an invalid input or a field that was not filled.
+			</h3>
+			
+		</div>
+
+		<div class="admin-panel remove-item">
+			<h2 class="panel-header">
+				Admin Panel - Remove Items
+			</h2>
+			<label for="remove-options">Select an item to remove:</label>
+			<form class="remove-form">
+				<select id="remove-options" name="remove-item">
+					<!-- Options are added dynamically with JavaScript -->
+				</select>
+				<div class="btn-wrapper">
+					<button class="btn-t2 btn-remove-item" type="button">Remove Item</button>
+				</div>
+			</form>
+
+		</div>
+
+	</div>
+
+	<script>
+		var btnCart=document.querySelector(".btn-cart"),cartItems=document.querySelector(".cart-items");btnCart.addEventListener("click",function(){cartItems.style.display="none"===cartItems.style.display?"block":"none"});
+	</script>
+
+	<script src="javascript/cartScript.js"></script>
+	<script src="javascript/createItem.js"></script>
+	<script src="javascript/removeItem.js"></script>
+	<script src="javascript/finite_carousel.js"></script>
+	<script src="javascript/tooltips.js"></script>
+
+
+</body>
+</html>
