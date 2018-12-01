@@ -152,7 +152,8 @@ ul {
 	position: relative;
 	z-index: 1000;
 	border-bottom: 2px solid black;
-	border-top: 2px solid black; ;
+	border-top: 2px solid black;
+	max-width: 1200px;
 
 }
 
@@ -763,6 +764,7 @@ ul {
 
 .admin-config {
 	flex-direction: column;
+	max-width: 1200px;
 }
 
 .admin-panel {
