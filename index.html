@@ -1,7 +1,6 @@
 <!-- IMPORTANT:
 FIX ISSUES:
-1. VALIDATE FORM WITH JAVASCRIPT REGULAR EXPRESSIONS
-2. WHEN ADDING TO CART THE INVENTORY CAN GO NEGATIVE, FIX!!
+1. WHEN ADDING TO CART THE INVENTORY CAN GO NEGATIVE, FIX!!
  -->
 
 <!DOCTYPE html>
@@ -70,7 +69,7 @@ FIX ISSUES:
 
 	</header>
 
-	<div class="section-featured">
+	<div class="section-featured" style="display: none;">
 		
 		<div class="featured-header">
 
@@ -492,6 +491,7 @@ FIX ISSUES:
 				<div class="input-container input-image">
 					<label for="phone-image">Image URL:</label>
 					<input id="phone-image" type="text" required>
+					<span class="tooltip tooltip-model-capacity" style="display: none">File format must be .jpg or .png</span>
 				</div>
 				<div class="btn-wrapper">
 					<button class="btn-t2 btn-create-item" type="button">Create Item</button>
@@ -499,7 +499,7 @@ FIX ISSUES:
 			</form>
 
 			<h3 class="warning-empty" style="display: none;">
-				*Error: there is an invalid input or a field that was not filled.
+				*Error: there is an invalid input or a field that was left empty.
 			</h3>
 			
 		</div>
@@ -523,14 +523,22 @@ FIX ISSUES:
 	</div>
 
 	<script>
+		// Grants the event of toggling on and off the visibility of the cart list.
 		var btnCart=document.querySelector(".btn-cart"),cartItems=document.querySelector(".cart-items");btnCart.addEventListener("click",function(){cartItems.style.display="none"===cartItems.style.display?"block":"none"});
 	</script>
 
-	<script src="javascript/cartScript.js"></script>
-	<script src="javascript/createItem.js"></script>
-	<script src="javascript/removeItem.js"></script>
-	<script src="javascript/finite_carousel.js"></script>
-	<script src="javascript/tooltips.js"></script>
+	<script src="javascript/cartAndShowcaseScript.js"></script>
+	<script src="javascript/carouselFinite.js"></script>
+	<script>
+
+		// This code prevents the user to hover over immediately the carousel items
+		// It waits for everything to load then display the carousel.
+		// This is made because otherwise the carousel behaves unexpectedly.
+
+		window.addEventListener('load', () => {
+			document.querySelector('.section-featured').style.display = 'block';
+		})
+	</script>
 
 
 </body>

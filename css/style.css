@@ -945,5 +945,8 @@ ul {
 	.input-model-capacity .tooltip		 	 {top: -3px;}
 	.input-model-capacity .tooltip::after  	 {top: 13px;}
 
+	.input-image .tooltip		 	 		 {top: -3px;}
+	.input-image .tooltip::after  	 		 {top: 13px;}
+
 }
 
